@@ -5,19 +5,19 @@ import java.util.List;
 
 public class ValidationError extends StandardError {	
 	private static final long serialVersionUID = 1L;
-	
-	private List<FieldMessage> list = new ArrayList<>();
-	
-	public ValidationError(Integer status, String msg, Long timeStamp) {
-		super(status, msg, timeStamp);
+
+	private List<FieldMessage> errors = new ArrayList<>();
+
+	public ValidationError(Long timestamp, Integer status, String error, String message, String path) {
+		super(timestamp, status, error, message, path);
 	}
-	
+
 	public List<FieldMessage> getErrors() {
-		return list;
+		return errors;
 	}
-	
-	public void addError(String fieldName, String mensagem) {
-		list.add(new FieldMessage(fieldName, mensagem));
+
+	public void addError(String fieldName, String messagem) {
+		errors.add(new FieldMessage(fieldName, messagem));
 	}
 
 }
